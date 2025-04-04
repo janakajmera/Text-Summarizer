@@ -1,7 +1,7 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-from TextSummarizer.logging import logger
+from src.TextSummarizer.logging import logger
 from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
@@ -18,6 +18,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
     Returns:
         ConfigBox: Content of the YAML file as a ConfigBox object.
     """
+    print("Reading YAML file...")
     try:
         with open(path_to_yaml) as yaml_file:
             content = yaml.safe_load(yaml_file)
@@ -41,6 +42,8 @@ def create_directories(path_to_dirs: List, verbose = True):
     Returns:
         None
     """
+
+    print("Creating directories...")
     for dir_path in path_to_dirs:
         try:
             os.makedirs(dir_path, exist_ok=True)
